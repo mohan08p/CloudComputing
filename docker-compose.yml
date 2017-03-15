@@ -38,8 +38,9 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline:/usr/share/logstash/pipeline
+    command: logstash -f /etc/logstash/conf.d/logstash.conf
     ports:
-      - "5000:5000"
+      - "12201:12201/udp"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
