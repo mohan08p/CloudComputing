@@ -10,6 +10,10 @@ services:
     ports:
       - '3000:3000'
     command: rails s -b 0.0.0.0
+    logging:
+    driver: gelf
+    options:
+      gelf-address: 'udp://localhost:12201'
 
   logstash:
     build: logstash/
