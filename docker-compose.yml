@@ -15,25 +15,55 @@ services:
       options:
         gelf-address: 'udp://localhost:12201'
 
-  logstash:
-    build: logstash/
-    command: logstash -f /etc/logstash/conf.d/logstash.conf
-    ports:
-      - "12201:12201/udp"
 
   elasticsearch:
-    image: elasticsearch:latest
-    command: elasticsearch -Enetwork.host=0.0.0.0
+    build: elasticsearch/
     ports:
       - "9200:9200"
       - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      # disable X-Pack
+      # see https://www.elastic.co/guide/en/x-pack/current/xpack-settings.html
+      #     https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html#xpack-enabling
+      xpack.security.enabled: "false"
+      xpack.monitoring.enabled: "false"
+      xpack.graph.enabled: "false"
+      xpack.watcher.enabled: "false"
+    networks:
+      - elk
+
+  logstash:
+    build: logstash/
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+    ports:
+      - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
 
   kibana:
     build: kibana/
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config
     ports:
       - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
 
   db:
     build:
       context: ./db
       dockerfile: Dockerfile
+
+networks:
+
+  elk:
+    driver: bridge

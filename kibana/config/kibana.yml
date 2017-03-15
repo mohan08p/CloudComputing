@@ -1,0 +1,35 @@
+---
+## Default Kibana configuration from kibana-docker.
+## from https://github.com/elastic/kibana-docker/blob/master/build/kibana/config/kibana.yml
+#
+port: 5601
+server.name: kibana
+server.host: "0"
+elasticsearch.url: http://elasticsearch:9200
+elasticsearch_preserve_host: true
+kibana_index: ".kibana"
+default_app_id: "discover"
+request_timeout: 300000
+shard_timeout: 0
+verify_ssl: true
+
+## Disable X-Pack
+## see https://www.elastic.co/guide/en/x-pack/current/xpack-settings.html
+##     https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html#xpack-enabling
+#
+xpack.security.enabled: false
+xpack.monitoring.enabled: false
+xpack.graph.enabled: false
+xpack.reporting.enabled: false
+
+bundled_plugin_ids:
+ - plugins/dashboard/index
+ - plugins/discover/index
+ - plugins/doc/index
+ - plugins/kibana/index
+ - plugins/markdown_vis/index
+ - plugins/metric_vis/index
+ - plugins/settings/index
+ - plugins/table_vis/index
+ - plugins/vis_types/index
+ - plugins/visualize/index
