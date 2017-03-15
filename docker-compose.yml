@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      RAILS_ENV: development
+    ports:
+      - '3000:3000'
+    command: rails s -b 0.0.0.0
+
+  logstash:
+    build: logstash/
+    command: logstash -f /etc/logstash/conf.d/logstash.conf
+    ports:
+      - "12201:12201/udp"
+
+  elasticsearch:
+    image: elasticsearch:latest
+    command: elasticsearch -Enetwork.host=0.0.0.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  kibana:
+    build: kibana/
+    ports:
+      - "5601:5601"
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
