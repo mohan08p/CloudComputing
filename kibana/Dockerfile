@@ -4,9 +4,11 @@ FROM docker.elastic.co/kibana/kibana:5.2.1
 # Add your kibana plugins setup here
 # Example: RUN kibana-plugin install <name|url>
 
-#COPY entrypoint.sh /tmp/entrypoint.sh
-#RUN chmod +x /tmp/entrypoint.sh
+RUN apt-get update && apt-get install -y netcat
 
-#ADD kibana.yml /opt/kibana/config/
+COPY entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
 
-CMD ["entrypoint.sh"]
+ADD kibana.yml /opt/kibana/config/
+
+CMD ["/tmp/entrypoint.sh"]
