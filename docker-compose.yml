@@ -3,7 +3,7 @@ version: '2'
 services:
   web:
     build:
-      context: nginx/
+      context: ./nginx
       dockerfile: Dockerfile
     links:
       - app
@@ -26,7 +26,6 @@ services:
 
   elasticsearch:
     build: elasticsearch/
-    command: elasticsearch -Ees.network.host=0.0.0.0
     ports:
       - "9200:9200"
       - "9300:9300"
