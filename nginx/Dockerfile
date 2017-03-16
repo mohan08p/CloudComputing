@@ -11,7 +11,7 @@ ENV RAILS_ROOT /home/ubuntu/Docker-ELK-Rails/app
 WORKDIR $RAILS_ROOT
 
 # create log directory
-#RUN mkdir log
+RUN mkdir log
 RUN touch log/nginx.access.log
 RUN touch log/nginx.error.log
 
