@@ -12,8 +12,8 @@ WORKDIR $RAILS_ROOT
 
 # create log directory
 #RUN mkdir log
-#RUN touch log/nginx.access.log
-#RUN touch log/nginx.error.log
+RUN touch log/nginx.access.log
+RUN touch log/nginx.error.log
 
 # copy over static assets
 # COPY public public/
