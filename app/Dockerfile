@@ -8,3 +8,5 @@ ADD Gemfile Gemfile.lock /app/
 RUN bundle install -j5 --retry 10
 
 ADD . /app
+
+CMD bundle exec puma -C config/puma.rb

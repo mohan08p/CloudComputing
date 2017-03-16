@@ -3,6 +3,15 @@ version: '2'
 services:
   web:
     build:
+      context: nginx/
+      dockerfile: Dockerfile
+    links:
+      - app
+    ports:
+      - "80:80"
+
+  app:
+    build:
       context: ./app
       dockerfile: Dockerfile
     environment:
@@ -14,7 +23,6 @@ services:
       driver: gelf
       options:
         gelf-address: 'udp://localhost:12201'
-
 
   elasticsearch:
     build: elasticsearch/
