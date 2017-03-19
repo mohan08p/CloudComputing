@@ -8,17 +8,24 @@ services:
     links:
       - app
     ports:
-      - "80:80"
+      - '80:80'
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
 
   app:
     build:
       context: ./app
       dockerfile: Dockerfile
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: production
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     ports:
       - '3000:3000'
-    command: rails s -b 0.0.0.0
+    depends_on:
+      - db
     logging:
       driver: gelf
       options:
@@ -67,12 +74,6 @@ services:
     depends_on:
       - elasticsearch
 
-  db:
-    build:
-      context: ./db
-      dockerfile: Dockerfile
-
 networks:
-
   elk:
     driver: bridge
