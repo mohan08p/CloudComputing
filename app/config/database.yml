@@ -17,7 +17,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: app_development
   username: postgres
   password:
   host: db
@@ -82,3 +81,6 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+production:
+  <<: *default
+  database: app_production

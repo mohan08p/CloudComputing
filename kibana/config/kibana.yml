@@ -4,7 +4,7 @@
 #
 port: 5601
 server.name: kibana
-server.host: "0"
+server.host: "0.0.0.0"
 elasticsearch.url: http://elasticsearch:9200
 elasticsearch_preserve_host: true
 kibana_index: ".kibana"

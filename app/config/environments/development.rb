@@ -9,6 +9,15 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.lograge.logger = ActiveSupport::Logger.new(STDOUT)
+  config.lograge.custom_options = lambda do |event|
+    {
+      request_ip: event.payload[:request_ip]
+    }
+  end
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

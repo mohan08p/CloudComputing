@@ -20,12 +20,13 @@ services:
       context: ./app
       dockerfile: Dockerfile
     environment:
-      RAILS_ENV: production
+      RAILS_ENV: development
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     ports:
       - '3000:3000'
     depends_on:
       - db
+      - logstash
     logging:
       driver: gelf
       options:
@@ -46,8 +47,6 @@ services:
       xpack.monitoring.enabled: "false"
       xpack.graph.enabled: "false"
       xpack.watcher.enabled: "false"
-    networks:
-      - elk
 
   logstash:
     build: logstash/
@@ -59,8 +58,6 @@ services:
       - "12201:12201/udp"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - elk
     depends_on:
       - elasticsearch
 
@@ -70,11 +67,5 @@ services:
       - ./kibana/config/:/usr/share/kibana/config
     ports:
       - "5601:5601"
-    networks:
-      - elk
     depends_on:
       - elasticsearch
-
-networks:
-  elk:
-    driver: bridge
