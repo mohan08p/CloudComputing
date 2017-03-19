@@ -1,0 +1,3 @@
+xpack.security.enabled: false
+xpack.monitoring.enabled: false
+xpack.graph.enabled: false

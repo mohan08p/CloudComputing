@@ -7,6 +7,7 @@ server.name: kibana
 server.host: "0.0.0.0"
 elasticsearch.url: http://elasticsearch:9200
 elasticsearch_preserve_host: true
+#elasticsearch.password: changeme
 kibana_index: ".kibana"
 default_app_id: "discover"
 request_timeout: 300000

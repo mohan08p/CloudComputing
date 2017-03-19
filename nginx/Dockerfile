@@ -5,10 +5,10 @@ FROM nginx
 RUN apt-get update -qq && apt-get -y install apache2-utils
 
 # establish where Nginx should look for files
-ENV RAILS_ROOT /home/ubuntu/Docker-ELK-Rails/app
+#ENV RAILS_ROOT /home/ubuntu/Docker-ELK-Rails/app
 
 # Set our working directory inside the image
-WORKDIR $RAILS_ROOT
+#WORKDIR $RAILS_ROOT
 
 # create log directory
 RUN mkdir log
