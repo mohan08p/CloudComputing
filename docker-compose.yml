@@ -2,24 +2,24 @@ version: '2'
 
 services:
   web:
+    container_name: nginx-proxy
     build:
       context: ./nginx
       dockerfile: Dockerfile
     links:
       - app
+      - kibana
     ports:
       - '80:80'
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://localhost:12201'
 
   db:
+    container_name: db_postgres
     build:
       context: ./db
       dockerfile: Dockerfile
 
   app:
+    container_name: app_rails
     build:
       context: ./app
       dockerfile: Dockerfile
@@ -31,8 +31,14 @@ services:
     depends_on:
       - db
       - logstash
+    logging:
+      driver: gelf
+      options:
+        gelf-address: 'udp://localhost:12201'
+
 
   elasticsearch:
+    container_name: elasticsearch
     build: elasticsearch/
     command: elasticsearch -Enetwork.host=0.0.0.0
     ports:
@@ -51,6 +57,7 @@ services:
       - elk
 
   logstash:
+    container_name: logstash
     build: logstash/
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
@@ -66,6 +73,7 @@ services:
       - elasticsearch
 
   kibana:
+    container_name: kibana
     build: kibana/
     volumes:
       - ./kibana/config/:/usr/share/kibana/config

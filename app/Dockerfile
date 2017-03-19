@@ -6,6 +6,5 @@ WORKDIR /app
 ADD Gemfile Gemfile.lock /app/
 
 RUN bundle install -j5 --retry 10
-RUN bundle exec rails db:migrate RAILS_ENV=development
 
 ADD . /app
