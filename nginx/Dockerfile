@@ -5,10 +5,13 @@ FROM nginx
 RUN apt-get update -qq && apt-get -y install apache2-utils
 
 # establish where Nginx should look for files
-#ENV RAILS_ROOT /home/ubuntu/Docker-ELK-Rails/app
+ENV PROJECT_ROOT /home/ubuntu/Docker-ELK-Rails
 
 # Set our working directory inside the image
-#WORKDIR $RAILS_ROOT
+WORKDIR $PROJECT_ROOT
+
+# Remove the default Nginx configuration file
+# RUN rm -v /etc/nginx/nginx.conf
 
 # create log directory
 RUN mkdir log
@@ -23,9 +26,9 @@ COPY config/nginx.conf /tmp/docker_example.nginx
 
 # substitute variable references in the Nginx config template for real values from the environment
 # put the final config in its place
- RUN envsubst '$RAILS_ROOT' < /tmp/docker_example.nginx > /etc/nginx/conf.d/default.conf
-#RUN rm -rf /etc/nginx/sites-available/default
-#ADD config/nginx.conf /etc/nginx/sites-enabled/nginx.conf
+RUN envsubst '$PROJECT_ROOT' < /tmp/docker_example.nginx > /etc/nginx/conf.d/default.conf
+RUN rm -rf /etc/nginx/sites-available/default
+ADD config/nginx.conf /etc/nginx/sites-enabled/nginx.conf
 
 EXPOSE 80
 

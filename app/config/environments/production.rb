@@ -69,7 +69,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  #config.logger = GELF::Logger.new("localhost", 12201, "WAN", { :facility => "RAILS_APP" })
+  # config.logger = GELF::Logger.new("localhost", 12201, "WAN", { :facility => "RAILS_APP" })
 
   config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Logstash.new

@@ -11,12 +11,21 @@ services:
       - kibana
     ports:
       - '80:80'
+    depends_on:
+      - app
+      - kibana
+      - logstash
+      - elasticsearch
+    networks:
+      - elk
 
   db:
     container_name: db_postgres
     build:
       context: ./db
       dockerfile: Dockerfile
+    networks:
+      - elk
 
   app:
     container_name: app_rails
@@ -24,8 +33,8 @@ services:
       context: ./app
       dockerfile: Dockerfile
     environment:
-      RAILS_ENV: development
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+      RAILS_ENV: production
+    command: bundle exec rails s -p 3000 -b "0.0.0.0"
     ports:
       - '3000:3000'
     depends_on:
@@ -35,6 +44,10 @@ services:
       driver: gelf
       options:
         gelf-address: 'udp://localhost:12201'
+    networks:
+      - elk
+    env_file:
+      - .app.env
 
 
   elasticsearch:
