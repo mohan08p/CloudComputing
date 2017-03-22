@@ -23,6 +23,7 @@ RUN touch log/nginx.error.log
 
 # Copy Nginx config template
 COPY config/nginx.conf /tmp/docker_example.nginx
+COPY config/.htpasswd /etc/nginx/.htpasswd
 
 # substitute variable references in the Nginx config template for real values from the environment
 # put the final config in its place
