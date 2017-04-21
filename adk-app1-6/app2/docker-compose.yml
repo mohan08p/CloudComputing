@@ -1,0 +1,20 @@
+web:
+  restart: always
+  build: ./web
+  expose:
+    - "8000"
+  volumes:
+    - /usr/src/app/static
+  command: /usr/local/bin/gunicorn -w 2 -b :8000 app:app
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - /www/static
+  volumes_from:
+    - web
+  links:
+    - web:web

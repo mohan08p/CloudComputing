@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<p> hi {{users}}</p><br>
+<p>Welcome to our website.</p>
+
+<form action="/todo" method="POST">
+  <div class="form-group">
+    <input name="text" class="form-control input-lg" type="text" placeholder="Enter a message" required>
+  </div>
+  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
+</form>
+
+<br>
+<br>
+<div class="text-center">
+  <p>Message from app1: {{message}}</p>
+</div>
+{% endblock %}
