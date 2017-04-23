@@ -1,0 +1,435 @@
+/* ================================================================ *\
+	#Reset
+\* ================================================================ */
+
+* { padding: 0; margin: 0; outline: 0; }
+
+/* ================================================================ *\
+	#Base
+\* ================================================================ */
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section { display: block; }
+
+html,
+body { height: 100%; }
+
+html { overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { background: #15141a; font-family: 'Source Sans Pro', Arial, sans-serif; font-size: 18px; line-height: 1.45; color: #999; -webkit-font-smoothing:antialiased; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { border: 0; vertical-align: middle; }
+strong { font-weight: bold; }
+
+
+h1,
+h2,
+h3,
+h4 { color: #1a1a1a; font-weight: 600; }
+
+h1 { font-size: 48px; }
+h2 { font-size: 36px; }
+h3 { font-size: 24px; }
+h5 { margin: 7px 0 13px; }
+
+button,
+input,
+select,
+textarea { font-family: 'Source Sans Pro', Arial, sans-serif; font-size: inherit; color: inherit; -webkit-font-smoothing:antialiased; -webkit-appearance: none; }
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] { cursor: pointer; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner { padding: 0; border: 0; }
+
+button { overflow: visible; }
+textarea { overflow: auto; resize: none; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+th,
+td { padding: 0; }
+
+/* ================================================================ *\
+	#Helpers
+\* ================================================================ */
+
+.alignleft { float: left; }
+.alignright { float: right; }
+.hidden { display: none; visibility: hidden; }
+
+.clearfix:before,
+.clearfix:after { display: table; content: ' '; }
+.clearfix:after { clear: both; }
+
+/* ================================================================ *\
+	#Icons
+\* ================================================================ */
+
+.ico { display: inline-block; vertical-align: middle; background-image: url(images/sprite.png); }
+
+.ico-bolt { width: 16px; height: 16px; background-position: -125px 0px; }
+.ico-cup { width: 16px; height: 16px; background-position: -146px 0px; }
+.ico-device { width: 32px; height: 32px; background-position: -167px 0px; }
+.ico-gauge { width: 16px; height: 16px; background-position: -204px 0px; }
+.ico-gear { width: 32px; height: 32px; background-position: -225px 0px; }
+.ico-envelope { width: 32px; height: 32px; background-position: -262px 0px; }
+.ico-marker { width: 32px; height: 32px; background-position: -299px 0px; }
+.ico-monitor { width: 32px; height: 32px; background-position: -336px 0px; }
+.ico-mouse { width: 16px; height: 16px; background-position: -373px 0px; }
+.ico-thumb { width: 33px; height: 32px; background-position: -394px 0px; }
+
+.icon-bar { background: #fff; }
+
+/* ================================================================ *\
+	#Buttons
+\* ================================================================ */
+
+.btn { padding: 14px 26px; border-radius: 3px; font-size: 14px; font-weight: bold; text-transform: uppercase; }
+.btn {
+	-webkit-transition: all 0.2s ease-out; 
+	     -o-transition: all 0.2s ease-out; 
+	        transition: all 0.2s ease-out; 
+}
+.btn-default { color: #008ed6; border: 1px solid #e0e0e0; }
+.btn-default:hover { color: #fff; background: #008ed6; border: 1px solid #008ed6; }
+.btn-primary { background: #008ed6; border: 1px solid #008ed6; }
+.btn-primary:hover { background: #006fa8; border-color: #006fa8; }
+.btn-dark { padding: 14px 30px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; }
+.btn-dark:hover { background: #fff; color: #008ed6; }
+
+/* ================================================================ *\
+	#Containers
+\* ================================================================ */
+
+.wrapper { background: #fff; }
+
+/* ================================================================ *\
+	#Forms
+\* ================================================================ */
+
+.form-control { height: 50px; padding: 14px 17px; text-transform: uppercase; background: #fff; border: 1px solid #d0d0d1; }
+.form-control:focus { box-shadow: none; border-color: #008ed6; }
+
+/* ================================================================ *\
+	#Header
+\* ================================================================ */
+
+.header { min-height: 640px; background: #15141a url(images/header-bg.jpg) no-repeat 0 0; background-size: cover; }
+
+.navbar { margin-bottom: 26px; }
+.navbar > .container .navbar-brand { height: 18px; padding: 0; background: url(images/sprite.png) no-repeat 0 0; font-size: 0; line-height: 0; text-indent: -4000px; margin: 40px 0 0; width: 120px; }
+.nav { font-size: 16px; font-weight: 600; margin: 27px 0 0 0; }
+.nav > li > a { color: #fffefe; padding: 10px 11px; }
+.nav > li > a:hover,
+.nav > li > a:focus { background: transparent; }
+.nav > li > a:after { content: ''; display: block; width: 42px; height: 2px; margin: 8px auto 0; background: transparent; border-width: 0 20px; border-style: solid; border-color: transparent; }
+.nav > li > a:after {
+	-webkit-transition: all 0.2s ease-out; 
+	     -o-transition: all 0.2s ease-out; 
+	        transition: all 0.2s ease-out; 
+}
+.nav > .active > a:after,
+.nav > li > a:hover:after,
+.nav > li > a:focus:after { border-color: #008ed6; }
+.navbar-toggle { border: 1px solid rgba(255, 255, 255, 0.2); }
+.navbar-toggle:active { background: rgba(255, 255, 255, 0.2); }
+
+.jumbotron { background: transparent; padding: 0; margin: 0; min-height: 535px; }
+.jumbotron-content { padding-top: 48px; }
+.jumbotron-image { display: table-cell; height: 535px; text-align: right; width: 100%; vertical-align: bottom; }
+.jumbotron-image img { max-width: 100%; }
+.jumbotron h5 { color: #008ed6; font-size: 14px; font-weight: bold; text-transform: uppercase; }
+.jumbotron h1 { margin: 15px 0 19px; color: #fff; font-size: 48px; }
+.jumbotron p { font-size: 18px; margin-right: 20px; }
+.jumbotron-actions { margin-top: 60px; font-size: 0; }
+.jumbotron-actions .btn + .btn { margin-left: 20px; }
+
+.jumbotron-form-contacts { margin: 17px 0; padding: 27px 40px; background: #fff; }
+.jumbotron-form-contacts .form-head { margin-bottom: 31px; }
+.jumbotron-form-contacts .form-head p { font-size: 14px; }
+.jumbotron-form-contacts .form-head h3 { margin: 0; }
+.jumbotron-form-contacts .form-group { margin: 20px 0 0; }
+.jumbotron-form-contacts .form-body  { margin-bottom: 15px; }
+
+.subscribe { margin: 53px 0 20px; }
+.form-control-subscribe { display: inline-block; vertical-align: middle; margin: 10px 6px; max-width: 230px; background: transparent; border-color: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.2); text-transform: none; }
+.form-control-subscribe:focus { border-color: #fff; color: #fff; }
+/* ================================================================ *\
+	#Section
+\* ================================================================ */
+
+.section { padding: 56px 0 30px; }
+.section-title { margin: 9px 0 0; }
+.section-image img { max-width: 100%; }
+.section-head { margin-bottom: 25px; }
+.section-head h5 { color: #008ed6; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; }
+.section-head h2:after { content: ''; display: block; width: 42px; height: 2px; margin: 36px 0 0; background: transparent; border-width: 0 20px; border-style: solid; border-color: #008ed6; }
+
+/* ================================================================ *\
+	#Features
+\* ================================================================ */
+
+.section-features { text-align: center; border-bottom: 1px solid #ededed; }
+.section-features .section-head h2:after { margin-left: auto; margin-right: auto; }
+
+.features { padding: 49px 0 30px; }
+.feature-image { position: relative; width: 88px; height: 88px; margin: 0 auto; border-radius: 50%; border: 1px solid #e0e0e0; }
+.feature-image .ico { position: absolute; left: 50%; top: 50%; }
+.feature-image .ico {
+	-webkit-transform: translate(-50%, -50%); 
+	    -ms-transform: translate(-50%, -50%); 
+	     -o-transform: translate(-50%, -50%); 
+	        transform: translate(-50%, -50%); 
+}
+.feature-title { margin: 31px 0 12px; }
+.feature-entry { padding: 0 15px;  }
+
+/* ================================================================ *\
+	#About
+\* ================================================================ */
+.section-about { padding: 56px 0 45px; }
+.section-about .section-content { padding-top: 54px;  }
+.section-about .section-title:after { margin: 27px 0 0; }
+
+.section-about-alt { padding: 52px 0 45px; background: #f2f2f2; }
+.section-about-alt .section-content { padding-top: 71px; }
+.section-about-alt .section-title { margin: 10px 0; }
+
+.list-features { padding: 13px 0; list-style: none outside none; color: #1b1b1b; }
+.list-features li { padding: 5px 0 6px;  }
+.list-features .ico { margin-right: 5px; }
+
+/* ================================================================ *\
+	#Testimonials
+\* ================================================================ */
+
+.section-testimonials { background: #15141a url(images/testimonials-bg.jpg) no-repeat 0 0; background-size: cover; text-align: center; height: 640px; }
+.section-testimonials .section-title { color: #fff;  }
+.section-testimonials .section-title:after { margin: 30px auto 0; }
+
+.slider-testimoinals { padding: 60px 0;  }
+.slider-testimoinals .slides { list-style: none outside none; white-space: nowrap; overflow: hidden; text-align: left; }
+.slider-testimoinals .slide { display: inline-block; vertical-align: top; width: 100%; white-space: normal; }
+.slider-testimoinals .bx-controls { text-align: center; margin-top: 136px; }
+.slider-testimoinals .bx-pager { display: inline-block; overflow: hidden; }
+.slider-testimoinals .bx-pager-item { float: left; margin: 0 8px; }
+.slider-testimoinals .bx-pager-link { display: block; width: 14px; height: 14px; border-radius: 50%; border: 3px solid transparent; font-size: 0; line-height: 0; text-indent: -4000px; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2); }
+.slider-testimoinals .bx-pager-link {
+	-webkit-transition: all 0.2s ease-out; 
+	     -o-transition: all 0.2s ease-out; 
+	        transition: all 0.2s ease-out; 
+}
+.slider-testimoinals .bx-pager-link.active,
+.slider-testimoinals .bx-pager-link:hover { background: #fff; border-color: #fff; }
+
+.testimonial-entry { font-size: 24px; font-style: italic; color: #fff; line-height: 1.35; margin-bottom: 23px; }
+.testimoinal-author { font-size: 0; text-align: left; }
+.testimoinal-author-avatar { display: inline-block; vertical-align: middle; width: 59px; height: 59px; border-radius: 50%; overflow: hidden; }
+.testimoinal-author-avatar img { max-width: 100%; max-height: 100%; }
+.testimonial-author-name { display: inline-block; vertical-align: middle; margin-left: 20px; font-size: 16px; color: #fff; }
+.testimonial-author-name span { display: block; font-size: 14px; font-weight: bold; text-transform: uppercase; margin-top: 5px; }
+
+/* ================================================================ *\
+	#Callout
+\* ================================================================ */
+.callout { padding: 43px 0 58px; background: #15141a; overflow: hidden; }
+.callout-title { float: left; color: #fff; font-weight: 300; }
+.callout-title strong { font-weight: 600; }
+.callout-actions { float: right; margin-top: 17px; font-size: 0; }
+.callout-actions .btn + .btn { margin-left: 20px; }
+
+/* ================================================================ *\
+	#Pricing
+\* ================================================================ */
+.section-pricing { text-align: center; padding: 51px 0 30px; }
+.section-pricing .section-title:after { margin: 30px auto 0; }
+
+.plans { padding: 45px 0 30px; }
+.plan { border-radius: 2px; border: 1px solid #e0e0e0; }
+.plan-head { border-bottom: 1px solid #e0e0e0; }
+.plan-title { margin: 0; padding: 24px 0 19px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #e0e0e0; }
+.plan-highlight .plan-title { color: #008ed6; border-color: #008ed6; }
+.plan-price { padding: 32px 0 35px; }
+.plan-highlight .plan-price { background: #008ed6; color: #fff; }
+.plan-price small { line-height: 1; display: block; font-size: 18px; margin-top: 5px; }
+.plan-highlight .plan-price small { color: #fff; }
+.plan-price span { color: #1a1a1a; font-size: 60px; font-weight: 600; line-height: 1; }
+.plan-highlight .plan-price span { color: #fff; }
+.plan-price em { vertical-align: super; font-size: 28px; font-style: normal; }
+.plan-body { padding: 45px 20px 29px;  }
+.plan-entry { height: 104px; margin-bottom: 41px; }
+.plan-actions .btn { padding: 14px 40px; }
+
+/* ================================================================ *\
+	#Contacts
+\* ================================================================ */
+
+.section-contacts { padding: 50px 0 0;  background: #ededed; text-align: center; }
+.section-contacts .section-title:after { margin: 30px auto; }
+
+.contacts { padding: 30px 0 59px; }
+.contacts .ico { margin-bottom: 26px; }
+.contacts a { color: #999; }
+.contacts a:hover { color: #008ed6; text-decoration: none; }
+
+.form-contacts-outer { position: relative; z-index: 50; height: 296px; }
+.form-contacts { position: absolute; left: 0; top: 0; width: 100%; padding: 60px 72px 40px; background: #15141a; }
+.form-contacts .form-group { margin-bottom: 20px; }
+.form-contacts .form-control { background: transparent; border-color: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.2); }
+.form-contacts textarea.form-control { height: 190px; }
+.form-contacts .form-control:focus { border-color: #fff; color: #fff; }
+.form-contacts .has-error .form-controls > * { border-color: #f00; }
+
+
+.form-contacts .form-actions { text-align: right; }
+
+.map { height: 370px; }
+
+/* ================================================================ *\
+	#Fotoer
+\* ================================================================ */
+
+.footer { background: #15141a; color: #444348; text-align: center; padding: 45px 0; }
+.copyright { font-size: 14px; font-weight: 600; text-transform: uppercase; }
+.copyright a { color: #444348; text-decoration: none;
+	-webkit-transition: color 0.2s; 
+	-o-transition: color 0.2s; 
+	transition: color 0.2s; }
+.copyright a:hover { color: #fff; }
+
+.footer-socials { margin-bottom: 16px; }
+.footer-socials ul { display: inline-block; list-style: none outside none; font-size: 0; }
+.footer-socials li { display: inline-block; vertical-align: middle; margin: 0 17px; }
+.footer-socials a { display: block; background-image: url(images/sprite.png); font-size: 0; line-height: 0; text-indent: -4000px;}
+
+.footer-socials .link-behance { width: 19px; height: 13px; background-position: -456px 0px; }
+.footer-socials .link-behance:hover { background-position: -432px 0px; }
+.footer-socials .link-dribble { width: 18px; height: 18px; background-position: -503px 0px; }
+.footer-socials .link-dribble:hover { background-position: -480px 0px; }
+.footer-socials .link-facebook { width: 10px; height: 18px; background-position: -541px 0px; }
+.footer-socials .link-facebook:hover { background-position: -526px 0px; }
+.footer-socials .link-linkedin { width: 18px; height: 18px; background-position: -579px 0px; }
+.footer-socials .link-linkedin:hover { background-position: -556px 0px; }
+.footer-socials .link-twitter { width: 18px; height: 14px; background-position: -625px 0px; }
+.footer-socials .link-twitter:hover { background-position: -602px 0px; }
+
+/* ================================================================ *\
+	#Responsive
+\* ================================================================ */
+@media only screen and (max-width: 1199px) {
+	
+	/* ================================================================ *\
+		#Callout
+	\* ================================================================ */
+	.callout-title,
+	.callout-actions { float: none; text-align: center; }
+	.callout-actions { margin-top: 20px; }
+	.callout-actions .btn,
+	.callout-actions .btn + .btn { margin: 10px; }
+	
+}
+
+@media only screen and (max-width: 991px) {
+
+	/* ================================================================ *\
+		#Base
+	\* ================================================================ */
+	
+	h1 { font-size: 36px; }
+	h2 { font-size: 24px; }
+	h3 { font-size: 18px; }
+	
+
+	/* ================================================================ *\
+		#Header
+	\* ================================================================ */
+	
+	.jumbotron h1 { font-size: 36px; }
+	.jumbotron-image { display: block; height: auto; padding-top: 50px; text-align: center; }
+	.jumbotron-image img { height: auto; }
+
+	/* ================================================================ *\
+		#Section
+	\* ================================================================ */
+	
+	.section-image { text-align: center; }
+	
+
+	/* ================================================================ *\
+		#Features
+	\* ================================================================ */
+	
+	.feature { padding-bottom: 40px; }
+
+	/* ================================================================ *\
+		#Testimonials
+	\* ================================================================ */
+	
+	.section-testimonials { height: auto; }
+
+	.slider-testimoinals { padding: 30px 0; }
+	.slider-testimoinals .bx-controls { margin-top: 30px; }
+
+	.testimonial { padding: 20px 40px; }
+
+	/* ================================================================ *\
+		#Plans
+	\* ================================================================ */
+	
+	.plan { margin-bottom: 30px; }
+	
+}
+
+@media only screen and (max-width: 767px) {
+
+	/* ================================================================ *\
+		#Header
+	\* ================================================================ */
+
+	.nav { margin-top: 0; text-align: center; }
+	.nav > li { border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+	.nav > li > a { padding: 11px 0 5px;  }
+	.nav > li > a:after { margin-top: 6px;  }
+
+	.navbar > .container .navbar-brand { margin: 17px 0 0 15px; }
+	
+	.jumbotron-actions { margin-top: 20px; float: none; text-align: center; }
+	.jumbotron-actions .btn,
+	.jumbotron-actions .btn + .btn { margin: 10px; }
+
+	.jumbotron-form-contacts .form-actions { text-align: center; }
+
+	/* ================================================================ *\
+		#Testimonials
+	\* ================================================================ */
+
+	.testimonial { padding: 40px 20px 0; }
+	.testimonial-entry { text-align: center; }
+	.testimoinal-author-avatar { display: block; margin: 0 auto 20px;  }
+	.testimonial-author-name { display: block; text-align: center; }
+
+	/* ================================================================ *\
+		#Contacts
+	\* ================================================================ */
+	
+	.contacts .ico { margin-bottom: 10px; }
+	.contacts p { margin-bottom: 35px; }
+
+	.form-contacts-outer { height: 500px; }
+	.form-contacts { padding: 30px; }
+	.form-contacts .form-actions { text-align: center; }
+	
+	
+}

@@ -1,0 +1,2 @@
+slackclient==1.0.5
+heroku3==3.2.2
