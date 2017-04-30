@@ -1,0 +1,102 @@
+version: '2'
+
+services:
+  web:
+    container_name: nginx-proxy
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    links:
+      - app
+      - kibana
+    ports:
+      - '80:80'
+    depends_on:
+      - app
+      - kibana
+      - logstash
+      - elasticsearch
+    networks:
+      - elk
+
+  db:
+    container_name: db_postgres
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    networks:
+      - elk
+
+  app:
+    container_name: app_rails
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      RAILS_ENV: production
+    command: bundle exec rails s -p 3000 -b "0.0.0.0"
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+      - logstash
+    logging:
+      driver: gelf
+      options:
+        gelf-address: 'udp://localhost:12201'
+    networks:
+      - elk
+    env_file:
+      - .app.env
+
+
+  elasticsearch:
+    container_name: elasticsearch
+    build: elasticsearch/
+    command: elasticsearch -Enetwork.host=0.0.0.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      # disable X-Pack
+      # see https://www.elastic.co/guide/en/x-pack/current/xpack-settings.html
+      #     https://www.elastic.co/guide/en/x-pack/current/installing-xpack.html#xpack-enabling
+      xpack.security.enabled: "false"
+      xpack.monitoring.enabled: "false"
+      xpack.graph.enabled: "false"
+      xpack.watcher.enabled: "false"
+    networks:
+      - elk
+
+  logstash:
+    container_name: logstash
+    build: logstash/
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+    command: logstash -f /etc/logstash/conf.d/logstash.conf
+    ports:
+      - "12201:12201/udp"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    container_name: kibana
+    build: kibana/
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+networks:
+  elk:
+    driver: bridge

@@ -1,0 +1,4 @@
+/screenshots
+/sample data/
+.app.env
+nginx/config/.htpasswd
