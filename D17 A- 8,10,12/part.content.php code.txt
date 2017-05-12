@@ -1,0 +1,67 @@
+<?php
+
+//print_r(stat('/var/www/owncloud/data/student/files_versions/abc.txt.v1490934494'));
+
+$i = 0; 
+$dir = '/var/www/owncloud/data/student/files_versions/';
+if ($handle = opendir($dir)) {
+    	while (($file = readdir($handle)) !== false){
+        		if (!in_array($file, array('.', '..')) && !is_dir($dir.$file)) 
+            	$i++;
+    	}
+ 	 $n= $i-1;
+//echo $n;
+}
+    
+// prints out how many were in the directory
+echo "There are $i versions";
+echo "<br>";
+$files = array();
+if ($dir) {
+//echo $dir;
+   	// loop through all of the files
+    	$handle = opendir($dir);
+   	//for($j=$n;$j>=0;$j--) {
+if(false !== ($file = readdir($handle))){
+if (!in_array($file, array('.', '..')) && !is_dir($dir.$file)) {
+    			if(is_file($dir.'/'.$file) && is_readable($dir.'/'.$file)){
+  	            	$files[$n] = $file;}
+//echo $files[$n];
+}}}
+ //$stat = stat('/var/www/owncloud/data/student/files_versions/abc.txt.v1490938665');
+ 
+//echo 'Access time: ' . $stat['atime'];
+// echo "$filename was last modified: " . date ("F d Y H:i:s.", $stat['atime'])."<br>";
+
+if($n>=0)
+{
+// Open a directory, and read its contents
+if (is_dir($dir)){
+  if ($dh = opendir($dir)){
+	while(($files[$n] = readdir($dh)) !== false){
+$stat = stat($files[$n]);
+ 
+//echo 'Access time: ' . $stat['atime'];
+ 	           //echo "$filename was last modified: " . date ("F d Y H:i:s.", $stat['atime'])."<br>";
+  		echo "filename:" . $files[$n] . "<br>";
+$stat = stat('/var/www/owncloud/data/student/files_versions/'.$files[$n]);
+echo "was last accessed: " . date ("F d Y H:i:s.", $stat['atime'])."<br>";
+echo "$filename was last modified: " . date ("F d Y H:i:s.", $stat['mtime'])."<br>";
+ 		// echo "$filename was last modified: " . date ("F d Y H:i:s.", filemtime($files[$n]))."<br>";
+  		//echo "$filename was last accessed: " . date("F d Y H:i:s.", fileatime($files[$n])). "<br>";
+    	}
+	closedir($dh);
+}}
+
+/*$filename = '/var/www/owncloud/data/student/files_versions/abc.txt.v1490938665';
+if (file_exists($filename)) {
+	echo "$filename was last modified: " . date ("F d Y H:i:s.", filemtime($filename));
+}
+
+$filename = '/var/www/owncloud/data/student/files_versions/abc.txt.v1490934494';
+if (file_exists($filename)) {
+	echo "$filename was last accessed: " . date("F d Y H:i:s.", fileatime($filename));
+}*/
+$n=$n-1;
+}
+?
