@@ -1,0 +1,6 @@
+pihole - Done  http://10.42.0.47/admin password - newpassword
+torrentbox - Done  username:pi password: google12 access_link: http://10.42.0.47:9091/ link_to_tut: https://pimylifeup.com/raspberry-pi-torrentbox/
+NAS - (done locally) (Using Mobile / Laptop to access ) USERNAME : nirbhay_NAS password : nirbhay HOW TO DO: Link: https://www.tinkernut.com/portfolio/make-raspberry-pi-nas-network-attached-storage/  if port forwarding / tunneling done then can be access from anywhere. 
+NAS (TONIDO) https://nirpi.tonidoid.com username: nirpi	password: google12  for local access: http://10.42.0.47:10001
+Weaved + Docker
+Orchestration (DONE)
