@@ -1,7 +1,7 @@
 **Cloud Computing simple mini projects**
 
 1. A sftp server using Python
-A SFTP server is created using **pysftp** python library.
+A  SFTP server is created using **pysftp** python library.
 Install it using
 `pip install pysftp`
 I have used a public server of Digital Ocean and created a 
